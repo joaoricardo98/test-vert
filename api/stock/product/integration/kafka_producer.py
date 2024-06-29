@@ -1,7 +1,8 @@
+import json
+
 from kafka import KafkaProducer
 from stock.settings import BOOTSTRAP_SERVERS
 from stock.settings import TOPIC_NAME
-import json
 
 
 class Kafka:

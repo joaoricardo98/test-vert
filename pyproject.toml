@@ -1,0 +1,29 @@
+[tool.black]
+skip-string-normalization = true
+
+[tool.isort]
+profile = "black"
+src_paths = ["fluxo_processamento", "deploy"]
+force_single_line = true
+
+[tool.coverage.run]
+source = ["fluxo_processamento"]
+branch = true
+omit = ["*/tests.py"]
+
+[tool.coverage.report]
+exclude_lines = ["@abstractmethod", "if __name__ == .__main__."]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "fluxo_processamento.settings"
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+explicit_package_bases = true
+
+[[tool.mypy.overrides]]
+module = "botocore.*, boto3.*"
+ignore_missing_imports = true

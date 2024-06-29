@@ -1,11 +1,10 @@
 import json
 
-from kafka import KafkaConsumer
-
 import config
-from models import Product
 from api import StockAPI
+from kafka import KafkaConsumer
 from logger import Logger
+from models import Product
 
 log = Logger('app')
 
@@ -15,7 +14,7 @@ def run():
     consumer = KafkaConsumer(
         config.TOPIC_NAME,
         bootstrap_servers=config.BOOTSTRAP_SERVERS,
-        value_deserializer=lambda x: json.loads(x.decode('utf-8'))
+        value_deserializer=lambda x: json.loads(x.decode('utf-8')),
     )
     log.info('starting consume')
     for msg in consumer:

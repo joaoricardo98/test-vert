@@ -1,7 +1,7 @@
-from rest_framework.generics import CreateAPIView
+from product.integration.kafka_producer import Kafka
 from product.models import Product
 from product.serializers import ProductSerializer
-from product.integration.kafka_producer import Kafka
+from rest_framework.generics import CreateAPIView
 
 
 class ProductViewSet(CreateAPIView):
